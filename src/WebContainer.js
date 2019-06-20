@@ -1,23 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Iframe from 'react-iframe'
 // var url = data.url + "&output=embed";
 // window.location.replace(url);
+import {
+  Button,
+} from '@material-ui/core'
+
 
 function WebContainer() {
+  const [responsiveWidth, setResponsiveWidth] = useState('500px')
+  function SetWidth() {
+    setResponsiveWidth('1000px')
+  }
   return (
     <div>
-      <Iframe
-        url="http://www.google.com&output=embed"
-        src="http://www.google.com&output=embed"
-        width="500px"
+      <iframe
+        title="Inline Frame Example"
+        url="https://frame.io"
+        src="https://frame.io"
+        width={responsiveWidth}
         height="450px"
         id="myId"
-        className="myClassname"
-        display="initial"
-        position="relative"
-        sandbox="allow-same-origin allow-forms"
-        scrolling
+        sandbox='allow-same-origin'
+
       />
+      <Button onClick={SetWidth}> Large </Button>
     </div>
   );
 }
