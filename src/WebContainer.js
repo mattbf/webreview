@@ -12,12 +12,14 @@ function WebContainer() {
   function SetWidth() {
     setResponsiveWidth('1000px')
   }
+  const passedUrl = "https://google.com" // must use double quotes
+  var url = "https://bypasscors.herokuapp.com/api/?url=" + encodeURIComponent(passedUrl);
   return (
     <div>
       <iframe
         title="Inline Frame Example"
-        url="https://frame.io"
-        src="https://frame.io"
+        url="http://google.com/"
+        src={url}
         width={responsiveWidth}
         height="450px"
         id="myId"
