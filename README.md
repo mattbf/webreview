@@ -20,3 +20,9 @@
 * Commenting/Messaging - []
   * pinpoint or select/highlight - []
   * attach to sketch - []
+
+- []
+-[]
+- [x]
+- [] jsldkjkfdslfj
+- [x] jkdslfjlds
