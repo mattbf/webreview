@@ -4,15 +4,18 @@ import Iframe from 'react-iframe'
 // window.location.replace(url);
 import {
   Button,
+  Input,
 } from '@material-ui/core'
 
 
 function WebContainer() {
   const [responsiveWidth, setResponsiveWidth] = useState('500px')
+
   function SetWidth() {
-    setResponsiveWidth('1000px')
+    setResponsiveWidth('100%')
   }
-  const passedUrl = "https://google.com" // must use double quotes
+  
+  const passedUrl = "https://facebook.com" // must use double quotes
   var url = "https://bypasscors.herokuapp.com/api/?url=" + encodeURIComponent(passedUrl);
   return (
     <div>
