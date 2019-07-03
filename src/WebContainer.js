@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Iframe from 'react-iframe'
+import DrawArea from './Drawing/DrawArea.js';
 // var url = data.url + "&output=embed";
 // window.location.replace(url);
 import {
@@ -14,8 +15,8 @@ function WebContainer() {
   function SetWidth() {
     setResponsiveWidth('100%')
   }
-  
-  const passedUrl = "https://facebook.com" // must use double quotes
+
+  const passedUrl = "https://google.com" // must use double quotes
   var url = "https://bypasscors.herokuapp.com/api/?url=" + encodeURIComponent(passedUrl);
   return (
     <div>
@@ -30,6 +31,7 @@ function WebContainer() {
 
       />
       <Button onClick={SetWidth}> Large </Button>
+      <DrawArea/>
     </div>
   );
 }
