@@ -1,5 +1,13 @@
 import React from 'react'
 
+const pathStyle = {
+  fill: 'none',
+  strokeWidth: '10px',
+  stroke: "#000",
+  strokeLinejoin: 'round',
+  strokeLinecap: 'round',
+}
+
 function DrawingLine({ line }) {
   const pathData = "M " +
     line
@@ -8,7 +16,7 @@ function DrawingLine({ line }) {
       })
       .join(" L ");
 
-  return <path className="path" d={pathData} />;
+  return <path className="path" d={pathData} style={pathStyle} />;
 }
 
 export default DrawingLine
