@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Iframe from 'react-iframe'
-import DrawArea2 from './Drawing/DrawArea2.js';
+import DrawArea from './Drawing/DrawArea.js';
 // var url = data.url + "&output=embed";
 // window.location.replace(url);
 import {
@@ -31,7 +31,7 @@ function WebContainer() {
 
       />
       <Button onClick={SetWidth}> Large </Button>
-      <DrawArea2/>
+      <DrawArea/>
     </div>
   );
 }
