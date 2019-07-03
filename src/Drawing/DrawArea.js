@@ -85,6 +85,7 @@ class DrawArea extends React.Component {
   }
 
   render() {
+    console.log(this.state.lines)
     return (
       <div
         className="drawArea"
@@ -94,6 +95,12 @@ class DrawArea extends React.Component {
         onMouseMove={this.handleMouseMove}
       >
         <Drawing lines={this.state.lines} />
+        {this.state.lines[0] ?
+          <div> <h3> x: this.state.lines[0].x</h3> </div>
+          :
+          null
+        }
+
       </div>
     );
   }
