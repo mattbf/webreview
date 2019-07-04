@@ -4,6 +4,8 @@ import DrawArea from './Drawing/DrawArea.js';
 import ContentInfoCard from './ContentInfoCard.js';
 import useWindowSize from  './useWindowSize.js';
 import useFrameSize from  './useFrameSize.js';
+import DetectClientInfo from './DetectClientInfo.js';
+
 // var url = data.url + "&output=embed";
 // window.location.replace(url);
 import {
@@ -16,8 +18,8 @@ function WebContainer() {
   const [responsiveWidth, setResponsiveWidth] = useState('500px')
   const windowRef = useRef()
   const windowSize = useWindowSize()
-  //const windowDiv = document.getElementById('webwindow').contentWindow
-  console.log(navigator.userAgent)
+  const {browserName, majorVersion, OSName} = DetectClientInfo()
+  console.log(browserName + majorVersion + OSName)
   function SetWidth() {
     setResponsiveWidth('100%')
   }
@@ -28,15 +30,15 @@ function WebContainer() {
   //const webWindow = document.getElementById("webwindow").contentWindow;
   const webWindow2 = windowRef;
 
-  function getSize() {
-    return {
-      width: webWindow2,
-      height: webWindow2,
-    };
-  }
-
-  const [frameSize, setFrameSize] = useState(getSize);
-
+  // function getSize() {
+  //   return {
+  //     width: webWindow2,
+  //     height: webWindow2,
+  //   };
+  // }
+  //
+  // const [frameSize, setFrameSize] = useState(getSize);
+  //
   // useEffect(() => {
   //
   //   function handleResize() {
@@ -46,13 +48,17 @@ function WebContainer() {
   //   return () => webWindow2.removeEventListener('resize', handleResize);
   //
   // }, []);
-
-  console.log(frameSize)
+  //
+  // console.log(frameSize)
 
   const [windowData, setWindowData] = useState({
     clientWidth: null,
     clientHeight: null,
     allowableWidth: 50,
+    allowableHeight: windowSize.height,
+    browser: browserName,
+    version: majorVersion,
+    os: OSName,
   })
 
   useEffect(() => {
@@ -61,6 +67,9 @@ function WebContainer() {
       clientHeight: webWindow2.current.clientHeight,
       allowableWidth: windowSize.width,
       allowableHeight: windowSize.height,
+      browser: browserName,
+      version: majorVersion,
+      os: OSName,
     })
   }, [webWindow2, windowSize])
 
@@ -81,6 +90,7 @@ function WebContainer() {
       <ContentInfoCard props={windowData}/>
       <Button onClick={SetWidth}> Large </Button>
       <DrawArea/>
+
     </div>
   );
 }
