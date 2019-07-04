@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import Iframe from 'react-iframe'
 import DrawArea from './Drawing/DrawArea.js';
 import ContentInfoCard from './ContentInfoCard.js';
+import useWindowSize from  './useWindowSize.js';
 // var url = data.url + "&output=embed";
 // window.location.replace(url);
 import {
@@ -13,7 +14,7 @@ import {
 function WebContainer() {
   const [responsiveWidth, setResponsiveWidth] = useState('500px')
   const windowRef = useRef()
-
+  const windowSize = useWindowSize()
   function SetWidth() {
     setResponsiveWidth('100%')
   }
@@ -23,9 +24,9 @@ function WebContainer() {
 
   //const webWindow = document.getElementById("webwindow").contentWindow;
   const webWindow2 = windowRef;
-  if (webWindow2.current) {
-    console.log(webWindow2.current)
-  }
+  // if (webWindow2.current) {
+  //   console.log(webWindow2.current)
+  // }
   //console.log(webWindow2)
 
   const [windowData, setWindowData] = useState({
@@ -38,9 +39,11 @@ function WebContainer() {
     setWindowData({
       clientWidth: webWindow2.current.clientWidth,
       clientHeight: webWindow2.current.clientHeight,
-      allowableWidth: webWindow2.current.ownerDocument.activeElement.clientWidth,
+      allowableWidth: windowSize.width,
+      allowableHeight: windowSize.height,
     })
-  }, [webWindow2])
+  }, [webWindow2, windowSize])
+
 
   return (
     <div>

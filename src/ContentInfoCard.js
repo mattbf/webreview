@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 function ContentInfoCard(props){
   const classes = useStyles()
   const info = props.props
-  console.log(props)
+  //console.log(props)
 
   return(
     <div className={classes.card}>
@@ -28,6 +28,7 @@ function ContentInfoCard(props){
         <Typography variant="body2">Location: {info.scroll}</Typography>
         <Typography variant="body2">Browser: {info.browser}</Typography>
         <Typography variant="body2">allowable width: {info.allowableWidth}</Typography>
+        <Typography variant="body2">allowable width: {info.allowableHeight}</Typography>
       </Paper>
     </div>
   )
