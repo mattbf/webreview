@@ -96,9 +96,8 @@ function DrawArea() {
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
     >
+      // Map an array of drawings (layers) for each user
       <Drawing lines={lines} />
-
-
     </div>
   );
 }
