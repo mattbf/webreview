@@ -28,7 +28,7 @@ function ContentInfoCard(props){
         <Typography variant="body2">Location: {info.scroll}</Typography>
         <Typography variant="body2">Browser: {info.browser}</Typography>
         <Typography variant="body2">allowable width: {info.allowableWidth}</Typography>
-        <Typography variant="body2">allowable width: {info.allowableHeight}</Typography>
+        <Typography variant="body2">allowable height: {info.allowableHeight}</Typography>
       </Paper>
     </div>
   )

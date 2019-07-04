@@ -29,7 +29,6 @@ function DrawArea() {
   const [lines, setLines] = useState(new Immutable.List())
   const [isDrawing, setIsDrawing] = useState(false)
   const drawRef = useRef();
-
   useEffect(() => {
     document.addEventListener("mouseup", handleMouseUp);
   })
