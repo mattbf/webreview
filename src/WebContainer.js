@@ -22,9 +22,26 @@ function WebContainer() {
   const {browserName, majorVersion, OSName} = DetectClientInfo()
   console.log(browserName + majorVersion + OSName)
 
+  //convert iframe width and height to px
+  // if (responsiveWidth.endsWith("%")) {
+  //     const iframeDim = {
+  //       width: windowSize.width * Integer.parseInt(responsiveWidth)/100
+  //     }
+  // } else {
+  //   const iframeDim = {
+  //     width: responsiveWidth,
+  //     height: responsiveHeight
+  //   }
+  // }
+
+  const iframeDim = {
+    width: responsiveWidth.endsWith("%") ? windowSize.width * parseInt(responsiveWidth)/100 : responsiveWidth,
+    height: responsiveHeight.endsWith("%") ? windowSize.height * parseInt(responsiveHeight)/100 : responsiveHeight,
+  }
+
   function SetWidth() {
     setResponsiveWidth('100%')
-    setResponsiveHeight('200px')
+    setResponsiveHeight('25%')
   }
 
   const passedUrl = "https://frame.io" // must use double quotes
@@ -66,8 +83,8 @@ function WebContainer() {
 
   useEffect(() => {
     setWindowData({
-      clientWidth: responsiveWidth,
-      clientHeight: responsiveHeight,
+      clientWidth: iframeDim.width,
+      clientHeight: iframeDim.height,
       allowableWidth: windowSize.width,
       allowableHeight: windowSize.height,
       browser: browserName,
