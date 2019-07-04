@@ -16,12 +16,15 @@ import {
 
 function WebContainer() {
   const [responsiveWidth, setResponsiveWidth] = useState('500px')
+  const [responsiveHeight, setResponsiveHeight] = useState('400px')
   const windowRef = useRef()
   const windowSize = useWindowSize()
   const {browserName, majorVersion, OSName} = DetectClientInfo()
   console.log(browserName + majorVersion + OSName)
+
   function SetWidth() {
     setResponsiveWidth('100%')
+    setResponsiveHeight('200px')
   }
 
   const passedUrl = "https://frame.io" // must use double quotes
@@ -30,15 +33,15 @@ function WebContainer() {
   //const webWindow = document.getElementById("webwindow").contentWindow;
   const webWindow2 = windowRef;
 
-  // function getSize() {
-  //   return {
-  //     width: webWindow2,
-  //     height: webWindow2,
-  //   };
-  // }
-  //
-  // const [frameSize, setFrameSize] = useState(getSize);
-  //
+  function getSize() {
+    return {
+      width: webWindow2,
+      height: webWindow2,
+    };
+  }
+
+  const [frameSize, setFrameSize] = useState(getSize);
+
   // useEffect(() => {
   //
   //   function handleResize() {
@@ -48,8 +51,8 @@ function WebContainer() {
   //   return () => webWindow2.removeEventListener('resize', handleResize);
   //
   // }, []);
-  //
-  // console.log(frameSize)
+
+  console.log(frameSize)
 
   const [windowData, setWindowData] = useState({
     clientWidth: null,
@@ -63,15 +66,15 @@ function WebContainer() {
 
   useEffect(() => {
     setWindowData({
-      clientWidth: webWindow2.current.clientWidth,
-      clientHeight: webWindow2.current.clientHeight,
+      clientWidth: responsiveWidth,
+      clientHeight: responsiveHeight,
       allowableWidth: windowSize.width,
       allowableHeight: windowSize.height,
       browser: browserName,
       version: majorVersion,
       os: OSName,
     })
-  }, [webWindow2, windowSize])
+  }, [webWindow2, windowSize, responsiveHeight, responsiveWidth])
 
 
   return (
@@ -81,7 +84,7 @@ function WebContainer() {
         url="http://google.com/"
         src={passedUrl}
         width={responsiveWidth}
-        height="450px"
+        height={responsiveHeight}
         id="webwindow"
         ref={windowRef}
         // sandbox='allow-same-origin'
