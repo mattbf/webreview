@@ -15,13 +15,41 @@ import {
 
 
 function WebContainer() {
-  const [responsiveWidth, setResponsiveWidth] = useState('500px')
-  const [responsiveHeight, setResponsiveHeight] = useState('400px')
+  const [responsiveWidth, setResponsiveWidth] = useState('414px')
+  const [responsiveHeight, setResponsiveHeight] = useState('896px')
   const windowRef = useRef()
   const windowSize = useWindowSize()
   const {browserName, majorVersion, OSName} = DetectClientInfo()
   console.log(browserName + majorVersion + OSName)
+  const screenSizes = [
+    {
+      name: 'fit',
+      width: '100%',
+      height: '100%',
+    },
+    {
+      name: 'desktop',
+      width: '1024px',
+      height: '768px',
+    },
+    {
+      name: 'iphone8',
+      width: '275px',
+      height: '600px',
+    },
+  ]
 
+  function selectScreenSize(event) {
+    // console.log("screen size changed")
+    // console.log(event.target.value)
+    // console.log(event.target)
+    var selectedScreen = screenSizes.find(function(element) {
+    return element.name == event.target.value;
+    });
+    // console.log(selectedScreen)
+    setResponsiveWidth(selectedScreen.width)
+    setResponsiveHeight(selectedScreen.height)
+  }
   //convert iframe width and height to px
   // if (responsiveWidth.endsWith("%")) {
   //     const iframeDim = {
@@ -109,6 +137,12 @@ function WebContainer() {
       />
       <ContentInfoCard props={windowData}/>
       <Button onClick={SetWidth}> Large </Button>
+      <select onChange={selectScreenSize}>
+        <option> hello </option>
+        {screenSizes.map((screen, index) =>
+          <option key={index} value={screen.name}> {screen.name} {screen.width}  {screen.height} </option>
+        )}
+      </select>
       <DrawArea/>
 
     </div>

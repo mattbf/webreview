@@ -4,6 +4,7 @@
   - [ ] URL viewing
   - [ ] Hosted ZIP file
 * Customize viewport Settings
+  - [ ] change window size depending on available size of screen
   - [ ] Allow scripts?
   - [ ] Within iframe navigation
   - [ ] Redirects?
