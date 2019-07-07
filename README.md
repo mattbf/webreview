@@ -22,3 +22,10 @@
 * Commenting/Messaging
   * pinpoint or select/highlight
   * attach to sketch
+
+
+  - [x] Task 1
+  - [x] Task 2
+    - [x] Subtask a
+    - [ ] Subtask b
+  - [x] Task 3
