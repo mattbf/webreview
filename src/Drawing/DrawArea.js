@@ -14,8 +14,7 @@ const useStyles = makeStyles({
   root: {
     border: 'solid',
     borderColor: '#FF8E53',
-    width: '100%',
-    height: '100%',
+    position: 'absolute',
   },
 });
 
@@ -24,6 +23,8 @@ function DrawArea(props) {
   const classes = useStyles();
   //Maybe create a global mode component instead
   const mode = props.mode
+  const width = props.w
+  const height = props.h
   const [lines, setLines] = useState(new Immutable.List())
   const [isDrawing, setIsDrawing] = useState(false)
   const drawRef = useRef();
@@ -82,13 +83,13 @@ function DrawArea(props) {
     });
   }
 
-    console.log(lines)
+  //console.log(lines)
 
   return (
     <div
       className={classes.root}
       id="drawArea"
-      style={{display: mode === 'markup' ? 'block' : 'none'}}
+      style={{display: mode === 'markup' ? 'block' : 'none', width: width, height: height}}
       ref={drawRef}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}

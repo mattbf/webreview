@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 function ModeWrapper() {
   const classes = useStyles()
   // have view, markup, and comment mode
-  const [mode, setMode] = useState('view')
+  const [mode, setMode] = useState('markup')
 
   function selectMode(view) {
     setMode(view)

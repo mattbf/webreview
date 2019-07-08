@@ -40,7 +40,7 @@ function WebContainer(props) {
   const windowRef = useRef()
   const windowSize = useWindowSize()
   const {browserName, majorVersion, OSName} = DetectClientInfo()
-  console.log(browserName + majorVersion + OSName)
+  //console.log(browserName + majorVersion + OSName)
   const screenSizes = [
     {
       name: 'fit',
@@ -85,7 +85,20 @@ function WebContainer(props) {
   var url = "https://bypasscors.herokuapp.com/api/?url=" + encodeURIComponent(passedUrl);
 
   //const webWindow = document.getElementById("webwindow").contentWindow;
-  const webWindow2 = windowRef;
+  const webWindow = windowRef;
+  if (webWindow.current) {
+    console.log(webWindow.current.contentWindow)
+    //url of iframe
+    //console.log(webWindow.current.contentWindow.location.href)
+    console.log(webWindow.current.document)
+    console.log(webWindow.current.documentElement)
+    console.log(webWindow.current.innerHeight)
+    console.log(webWindow.current.clientHeight)
+    console.log(webWindow.current.clientWidth)
+    console.log(webWindow.current.body)
+
+  }
+
 
   const [windowData, setWindowData] = useState({
     clientWidth: null,
@@ -99,15 +112,15 @@ function WebContainer(props) {
 
   useEffect(() => {
     setWindowData({
-      clientWidth: iframeDim.width,
-      clientHeight: iframeDim.height,
+      clientWidth: webWindow.current.clientWidth,
+      clientHeight: webWindow.current.clientHeight,
       allowableWidth: windowSize.width,
       allowableHeight: windowSize.height,
       browser: browserName,
       version: majorVersion,
       os: OSName,
     })
-  }, [webWindow2, windowSize, responsiveHeight, responsiveWidth])
+  }, [webWindow, windowSize, responsiveHeight, responsiveWidth])
 
 
   return (
@@ -116,7 +129,7 @@ function WebContainer(props) {
         <iframe
           title="Inline Frame Example"
           url="http://google.com/"
-          src={passedUrl}
+          src={url}
           width={responsiveWidth}
           height={responsiveHeight}
           id="webwindow"
@@ -130,7 +143,7 @@ function WebContainer(props) {
             <option key={index} value={screen.name}> {screen.name} {screen.width}  {screen.height} </option>
           )}
         </select>
-        <DrawArea mode={mode}/>
+        <DrawArea mode={mode} w={responsiveWidth} h={responsiveHeight}/>
       </div>
       <ContentInfoCard props={windowData}/>
     </div>

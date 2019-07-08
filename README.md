@@ -18,14 +18,15 @@
   - [ ] Location on website (Page and scroll height)
 * Drawing/sketching
   - [ ] as a layer on window
+  - [ ] Take a Screencapture with markups
   - [ ] multiple layers
   - [ ] customization (Color, size, shape, opacity)
 * Commenting/Messaging
   - [ ] pinpoint or select/highlight
   - [ ] attach to sketch
 * Modal viewing/editing
-  - [ ] control mode programmatically
+  - [x] control mode programmatically
   - [ ] View mode/test mode - regular browsing
   - [ ] Markup Mode - attach a sketch
   - [ ] Comment mode - pinpoint and add comment
-  - [ ] Review Mode?? - view/filter comments/markups
+  - [ ] Review Mode?? Part of View mode?? - view/filter comments/markups
