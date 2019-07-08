@@ -1,7 +1,7 @@
 import React from 'react';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import WebContainer from './WebContainer.js';
+import ModeWrapper from './ModeWrapper.js';
 
 const theme = createMuiTheme({
   primary: {
@@ -12,7 +12,7 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <WebContainer/>
+      <ModeWrapper/>
     </ThemeProvider >
   );
 }

@@ -58,17 +58,6 @@ function WebContainer() {
     setResponsiveWidth(selectedScreen.width)
     setResponsiveHeight(selectedScreen.height)
   }
-  //convert iframe width and height to px
-  // if (responsiveWidth.endsWith("%")) {
-  //     const iframeDim = {
-  //       width: windowSize.width * Integer.parseInt(responsiveWidth)/100
-  //     }
-  // } else {
-  //   const iframeDim = {
-  //     width: responsiveWidth,
-  //     height: responsiveHeight
-  //   }
-  // }
 
   const iframeDim = {
     width: responsiveWidth.endsWith("%") ? windowSize.width * parseInt(responsiveWidth)/100 : responsiveWidth,
@@ -85,27 +74,6 @@ function WebContainer() {
 
   //const webWindow = document.getElementById("webwindow").contentWindow;
   const webWindow2 = windowRef;
-
-  function getSize() {
-    return {
-      width: webWindow2,
-      height: webWindow2,
-    };
-  }
-
-  const [frameSize, setFrameSize] = useState(getSize);
-
-  // useEffect(() => {
-  //
-  //   function handleResize() {
-  //     setFrameSize(getSize());
-  //   }
-  //   webWindow2.addEventListener('resize', handleResize);
-  //   return () => webWindow2.removeEventListener('resize', handleResize);
-  //
-  // }, []);
-
-  console.log(frameSize)
 
   const [windowData, setWindowData] = useState({
     clientWidth: null,
