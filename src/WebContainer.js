@@ -17,14 +17,26 @@ import {
 
 const useStyles = makeStyles(theme => ({
   root: {
+  },
+  window: {
+
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '400px',
+    border: 'solid',
   }
 }));
 
 
-function WebContainer() {
+function WebContainer(props) {
   const classes = useStyles()
-  const [responsiveWidth, setResponsiveWidth] = useState('414px')
-  const [responsiveHeight, setResponsiveHeight] = useState('896px')
+  const mode = props.mode
+  const [responsiveWidth, setResponsiveWidth] = useState('300px')
+  const [responsiveHeight, setResponsiveHeight] = useState('500px')
   const windowRef = useRef()
   const windowSize = useWindowSize()
   const {browserName, majorVersion, OSName} = DetectClientInfo()
@@ -100,27 +112,27 @@ function WebContainer() {
 
   return (
     <div>
-      <iframe
-        title="Inline Frame Example"
-        url="http://google.com/"
-        src={passedUrl}
-        width={responsiveWidth}
-        height={responsiveHeight}
-        id="webwindow"
-        ref={windowRef}
-        // sandbox='allow-same-origin'
+      <div className={classes.window}>
+        <iframe
+          title="Inline Frame Example"
+          url="http://google.com/"
+          src={passedUrl}
+          width={responsiveWidth}
+          height={responsiveHeight}
+          id="webwindow"
+          ref={windowRef}
+          // sandbox='allow-same-origin'
 
-      />
+        />
+        <select onChange={selectScreenSize}>
+          <option> hello </option>
+          {screenSizes.map((screen, index) =>
+            <option key={index} value={screen.name}> {screen.name} {screen.width}  {screen.height} </option>
+          )}
+        </select>
+        <DrawArea mode={mode}/>
+      </div>
       <ContentInfoCard props={windowData}/>
-      <Button onClick={SetWidth}> Large </Button>
-      <select onChange={selectScreenSize}>
-        <option> hello </option>
-        {screenSizes.map((screen, index) =>
-          <option key={index} value={screen.name}> {screen.name} {screen.width}  {screen.height} </option>
-        )}
-      </select>
-      <DrawArea/>
-
     </div>
   );
 }

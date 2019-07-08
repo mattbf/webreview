@@ -33,7 +33,7 @@ function ModeWrapper() {
       <div
         style={{border: 'solid', borderColor: mode == 'view' ? '#000' : mode == 'markup' ? '#00c676' : '#ff8900'}}
       > </div>
-      <WebContainer/>
+      <WebContainer mode={mode}/>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
+import { makeStyles } from '@material-ui/core/styles';
 import Drawing from './Drawing.js';
 import DrawingLine from './DrawingLine.js';
 import Immutable from 'immutable';
@@ -6,26 +7,23 @@ import Immutable from 'immutable';
 
 
 const drawAreaStyle = {
-  border: 'solid',
-  width: '400px',
-  height: '400px',
+
 }
 
-// const useStyles = makeStyles({
-//   root: {
-//     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-//     border: 0,
-//     borderRadius: 3,
-//     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-//     color: 'white',
-//     height: 48,
-//     padding: '0 30px',
-//   },
-// });
+const useStyles = makeStyles({
+  root: {
+    border: 'solid',
+    borderColor: '#FF8E53',
+    width: '100%',
+    height: '100%',
+  },
+});
 
 
-function DrawArea() {
-  //const classes = useStyles();
+function DrawArea(props) {
+  const classes = useStyles();
+  //Maybe create a global mode component instead
+  const mode = props.mode
   const [lines, setLines] = useState(new Immutable.List())
   const [isDrawing, setIsDrawing] = useState(false)
   const drawRef = useRef();
@@ -88,9 +86,9 @@ function DrawArea() {
 
   return (
     <div
-      className="drawArea"
+      className={classes.root}
       id="drawArea"
-      style={drawAreaStyle}
+      style={{display: mode === 'markup' ? 'block' : 'none'}}
       ref={drawRef}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
