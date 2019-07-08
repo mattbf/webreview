@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Iframe from 'react-iframe'
 import DrawArea from './Drawing/DrawArea.js';
 import ContentInfoCard from './ContentInfoCard.js';
@@ -14,7 +15,14 @@ import {
 } from '@material-ui/core'
 
 
+const useStyles = makeStyles(theme => ({
+  root: {
+  }
+}));
+
+
 function WebContainer() {
+  const classes = useStyles()
   const [responsiveWidth, setResponsiveWidth] = useState('414px')
   const [responsiveHeight, setResponsiveHeight] = useState('896px')
   const windowRef = useRef()
