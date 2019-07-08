@@ -71,10 +71,10 @@ function WebContainer(props) {
     setResponsiveHeight(selectedScreen.height)
   }
 
-  const iframeDim = {
-    width: responsiveWidth.endsWith("%") ? windowSize.width * parseInt(responsiveWidth)/100 : responsiveWidth,
-    height: responsiveHeight.endsWith("%") ? windowSize.height * parseInt(responsiveHeight)/100 : responsiveHeight,
-  }
+  // const iframeDim = {
+  //   width: responsiveWidth.endsWith("%") ? windowSize.width * parseInt(responsiveWidth)/100 : responsiveWidth,
+  //   height: responsiveHeight.endsWith("%") ? windowSize.height * parseInt(responsiveHeight)/100 : responsiveHeight,
+  // }
 
   function SetWidth() {
     setResponsiveWidth('100%')
@@ -88,14 +88,15 @@ function WebContainer(props) {
   const webWindow = windowRef;
   if (webWindow.current) {
     console.log(webWindow.current.contentWindow)
+    console.log(webWindow.current)
     //url of iframe
     //console.log(webWindow.current.contentWindow.location.href)
-    console.log(webWindow.current.document)
-    console.log(webWindow.current.documentElement)
+    console.log(webWindow.current.scrollHeight)
     console.log(webWindow.current.innerHeight)
-    console.log(webWindow.current.clientHeight)
-    console.log(webWindow.current.clientWidth)
-    console.log(webWindow.current.body)
+    console.log(webWindow.current.scrollTop)
+    console.log(webWindow.scrollY)
+    // console.log(webWindow.current.scrollTop)
+    // console.log(webWindow.current.scrollTop)
 
   }
 
@@ -119,6 +120,7 @@ function WebContainer(props) {
       browser: browserName,
       version: majorVersion,
       os: OSName,
+      scroll: webWindow.current.scrollTop,
     })
   }, [webWindow, windowSize, responsiveHeight, responsiveWidth])
 
