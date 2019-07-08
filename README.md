@@ -23,3 +23,9 @@
 * Commenting/Messaging
   - [ ] pinpoint or select/highlight
   - [ ] attach to sketch
+* Modal viewing/editing
+  - [ ] control mode programmatically
+  - [ ] View mode/test mode - regular browsing
+  - [ ] Markup Mode - attach a sketch
+  - [ ] Comment mode - pinpoint and add comment
+  - [ ] Review Mode?? - view/filter comments/markups
