@@ -131,7 +131,7 @@ function WebContainer(props) {
         <iframe
           title="Inline Frame Example"
           url="http://google.com/"
-          src={url}
+          src={passedUrl}
           width={responsiveWidth}
           height={responsiveHeight}
           id="webwindow"

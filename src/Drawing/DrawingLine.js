@@ -6,6 +6,7 @@ const pathStyle = {
   stroke: "#000",
   strokeLinejoin: 'round',
   strokeLinecap: 'round',
+  
 }
 
 function DrawingLine({ line }) {

@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     border: 'solid',
     borderColor: '#FF8E53',
     position: 'absolute',
+    cursor: 'crosshair',
   },
 });
 

@@ -16,6 +16,7 @@
   - [x] Screen Size
   * Settings?
   - [ ] Location on website (Page and scroll height)
+  - [ ] User info (Name, Email, Time, History?)
 * Drawing/sketching
   - [ ] as a layer on window
   - [ ] Take a Screencapture with markups
