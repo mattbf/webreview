@@ -25,12 +25,17 @@ function ModeWrapper() {
   const classes = useStyles()
   // have view, markup, and comment mode
   const [mode, setMode] = useState('markup')
+  const [selectedIndex, setSelectedIndex] = useState(1)
+
+  function handleColorSelect(event, index) {
+    setSelectedIndex(index);
+  }
 
   return (
     <div className={classes.root}>
       <DrawArea mode={mode}/>
       <div>
-        <ColorSelect/>
+        <ColorSelect handleSelect={handleColorSelect}/>
         <StrokeSelect/>
       </div>
     </div>

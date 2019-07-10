@@ -56,17 +56,18 @@ const ColorButton = withStyles(theme => ({
   },
 }))(Button);
 
-export default function ColourPicker() {
+export default function ColourPicker(props) {
+  const handleColorSelect = props.handleSelect
   const classes = useStyles()
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-  function handleColorSelect(event, index) {
-    setSelectedIndex(index);
-    setOpen(false);
-    console.log(colors[selectedIndex])
-  }
+  // function handleColorSelect(event, index) {
+  //   setSelectedIndex(index);
+  //   setOpen(false);
+  //   console.log(colors[selectedIndex])
+  // }
 
   function handleToggle() {
     setOpen(prevOpen => !prevOpen);
