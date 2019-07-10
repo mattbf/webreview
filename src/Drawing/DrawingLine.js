@@ -1,15 +1,26 @@
-import React from 'react'
+import React, {useState, Fragment} from 'react'
 
-const pathStyle = {
-  fill: 'none',
-  strokeWidth: '10px',
-  stroke: "#000",
-  strokeLinejoin: 'round',
-  strokeLinecap: 'round',
-  
-}
 
-function DrawingLine({ line }) {
+//Need Stroke and colour selectors
+// Need to be able to select, resize, and delete lines
+
+function DrawingLine({ line }, props) {
+  const color = props.color
+  const stroke = props.stroke
+  const [selected, setSelected] = useState(false)
+  const [sketchStyle, setSketchStyle] = useState({
+    colour: "#000",
+    size: '5px',
+  })
+  const pathStyle = {
+    fill: 'none',
+    strokeWidth: sketchStyle.size,
+    stroke: sketchStyle.colour,
+    strokeLinejoin: 'round',
+    strokeLinecap: 'round',
+
+  }
+
   const pathData = "M " +
     line
       .map(p => {
@@ -17,7 +28,9 @@ function DrawingLine({ line }) {
       })
       .join(" L ");
 
-  return <path className="path" d={pathData} style={pathStyle} />;
+  return (
+      <path className="path" d={pathData} style={pathStyle} />
+  )
 }
 
 export default DrawingLine

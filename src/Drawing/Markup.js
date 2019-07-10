@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import DrawArea from './DrawArea.js';
+import MyColorPicker from './ColourPicker.js';
 
 
 import {
@@ -25,6 +26,7 @@ function ModeWrapper() {
   return (
     <div className={classes.root}>
       <DrawArea mode={mode}/>
+      <MyColorPicker/>
     </div>
   );
 }

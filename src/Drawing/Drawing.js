@@ -10,7 +10,7 @@ function Drawing({ lines }) {
   return (
     <svg className="drawing" style={drawingStyle}>
       {lines.map((line, index) => (
-        <DrawingLine key={index} line={line} />
+        <DrawingLine key={index} line={line}  />
       ))}
     </svg>
   );
