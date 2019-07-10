@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import DrawArea from './DrawArea.js';
-import MyColorPicker from './ColourPicker.js';
 import ColorSelect from './ColorSelect.js';
+import StrokeSelect from './StrokeSelect.js';
 
 
 import {
@@ -30,8 +30,8 @@ function ModeWrapper() {
     <div className={classes.root}>
       <DrawArea mode={mode}/>
       <div>
-        <MyColorPicker/>
         <ColorSelect/>
+        <StrokeSelect/>
       </div>
     </div>
   );

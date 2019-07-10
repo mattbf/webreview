@@ -18,7 +18,7 @@ import {
   Check,
 } from '@material-ui/icons';
 
-const colors = ['#000', '#00c676', '#2979ff', '#ff9800', '#673ab7'];
+const sizes = ['6', '8', '10', '14', '18'];
 
 const useStyles = makeStyles(theme => ({
   colorSelectDiv: {
@@ -38,10 +38,6 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '100%',
     padding: '3px',
     margin: '3px',
-    transition: 'all .2s ease-in-out',
-    '&:hover': {
-      transform: 'scale(1.1)',
-    },
   },
 }));
 
@@ -56,7 +52,7 @@ const ColorButton = withStyles(theme => ({
   },
 }))(Button);
 
-export default function ColourPicker() {
+export default function StrokeSelect() {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -65,7 +61,7 @@ export default function ColourPicker() {
   function handleColorSelect(event, index) {
     setSelectedIndex(index);
     setOpen(false);
-    console.log(colors[selectedIndex])
+    console.log(sizes[selectedIndex])
   }
 
   function handleToggle() {
@@ -79,7 +75,6 @@ export default function ColourPicker() {
 
     setOpen(false);
   }
-  console.log(colors[selectedIndex])
   return (
     <Grid container>
       <Grid item xs={12} align="center">
@@ -91,14 +86,16 @@ export default function ColourPicker() {
             aria-haspopup="true"
             onClick={handleToggle}
           >
-              <IconButton
-                 aria-label="Delete"
-                 className={classes.margin}
-                 style={{backgroundColor: colors[selectedIndex]}}
-                 size="small"
-               >
-               <Check fontSize="inherit" style={{opacity: 0}}/>
-             </IconButton>
+            <div style={{width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center',}}>
+                <IconButton
+                   aria-label="Delete"
+                   className={classes.margin}
+                   style={{backgroundColor: '#000', width: sizes[selectedIndex] + 'px', height: sizes[selectedIndex] +'px',}}
+                   size="small"
+                 >
+                 <Check fontSize="inherit" style={{opacity: 0}}/>
+               </IconButton>
+             </div>
             <ArrowDropDown />
           </ColorButton>
         <Popper open={open} anchorEl={anchorRef.current} transition disablePortal>
@@ -112,16 +109,16 @@ export default function ColourPicker() {
               <Paper id="menu-list-grow" style={{padding: '5px', }}>
                 <ClickAwayListener onClickAway={handleClose}>
                   <div className={classes.colorSelectDiv}>
-                    {colors.map((color, index) => (
+                    {sizes.map((size, index) => (
                        <IconButton
                           key={index}
                           onClick={event => handleColorSelect(event, index)}
                           aria-label="Delete"
                           className={classes.margin}
-                          style={{backgroundColor: color,}}
+                          style={{backgroundColor: '#000', width: size + "px",  height: size + "px", }}
                           size="small"
                         >
-                        {index === selectedIndex ? <Check fontSize="inherit"/> : <Check fontSize="inherit" style={{opacity: 0}}/>}
+                        <Check fontSize="inherit" style={{opacity: 0}}/>
                       </IconButton>
                     ))}
                   </div>
