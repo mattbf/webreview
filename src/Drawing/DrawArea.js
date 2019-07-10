@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     borderColor: '#FF8E53',
     position: 'absolute',
     cursor: 'crosshair',
+    marginLeft: '100px',
   },
 });
 
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
 function DrawArea(props) {
   const classes = useStyles();
   //Maybe create a global mode component instead
-  const mode = props.mode
+  //const mode = props.mode
   const width = props.w
   const height = props.h
   const [lines, setLines] = useState(new Immutable.List())
@@ -77,10 +78,12 @@ function DrawArea(props) {
 
   function relativeCoordinatesForEvent(mouseEvent) {
     const drawDiv = document.getElementById ("drawArea");
+    //const drawDiv = drawRef
     const boundingRect = drawDiv.getBoundingClientRect();
+    console.log(boundingRect)
     return new Immutable.Map({
-      x: mouseEvent.clientX - boundingRect.left,
-      y: mouseEvent.clientY - boundingRect.top,
+      x: mouseEvent.clientX - boundingRect.x,
+      y: mouseEvent.clientY - boundingRect.y,
     });
   }
 
@@ -90,13 +93,14 @@ function DrawArea(props) {
     <div
       className={classes.root}
       id="drawArea"
-      style={{display: mode === 'markup' ? 'block' : 'none', width: width, height: height}}
+      style={{width: '400px', height: '400px'}}
+      //style={{display: mode === 'markup' ? 'block' : 'none', width: width, height: height}}
       ref={drawRef}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
     >
-      // Map an array of drawings (layers) for each user
-      <Drawing lines={lines} />
+
+      <Drawing lines={lines} /> // Map an array of drawings (layers) for each user
     </div>
   );
 }

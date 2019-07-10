@@ -7,7 +7,7 @@ function GlobalRouter() {
   return (
     <Router>
        <Link to="/">Home</Link>
-        <Link to="/markup/">Markup</Link>
+       <Link to="/markup/">Markup</Link>
       <Route path="/" exact component={ModeWrapper} />
       <Route path="/markup/" component={Markup} />
     </Router>
