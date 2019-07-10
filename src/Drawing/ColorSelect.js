@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import {
   Grid,
   Button,
@@ -41,6 +41,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+//Custom CSS button
+const ColorButton = withStyles(theme => ({
+  root: {
+    color: '#000', //theme.palette.getContrastText(purple[500]),
+    backgroundColor: '#FFF',
+    '&:hover': {
+      backgroundColor: '#FFF',
+    },
+  },
+}))(Button);
+
 export default function ColourPicker() {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false);
@@ -68,7 +79,7 @@ export default function ColourPicker() {
   return (
     <Grid container>
       <Grid item xs={12} align="center">
-          <Button
+          <ColorButton
             color="primary"
             variant="contained"
             size="small"
@@ -76,8 +87,16 @@ export default function ColourPicker() {
             aria-haspopup="true"
             onClick={handleToggle}
           >
+              <IconButton
+                 aria-label="Delete"
+                 className={classes.margin}
+                 style={{backgroundColor: colors[selectedIndex]}}
+                 size="small"
+               >
+               <Check fontSize="inherit" style={{opacity: 0}}/>
+             </IconButton>
             <ArrowDropDown />
-          </Button>
+          </ColorButton>
         <Popper open={open} anchorEl={anchorRef.current} transition disablePortal>
           {({ TransitionProps, placement }) => (
             <Grow
@@ -95,7 +114,7 @@ export default function ColourPicker() {
                           onClick={event => handleColorSelect(event, index)}
                           aria-label="Delete"
                           className={classes.margin}
-                          style={{backgroundColor: color}}
+                          style={{backgroundColor: color,}}
                           size="small"
                         >
                         {index === selectedIndex ? <Check fontSize="inherit"/> : <Check fontSize="inherit" style={{opacity: 0}}/>}
