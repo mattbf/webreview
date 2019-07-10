@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import DrawArea from './DrawArea.js';
 import MyColorPicker from './ColourPicker.js';
+import ColorSelect from './ColorSelect.js';
 
 
 import {
@@ -14,6 +15,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '500px',
     height: '500px',
+    display: 'flex',
+    padding: '25px',
   },
 }));
 
@@ -26,7 +29,10 @@ function ModeWrapper() {
   return (
     <div className={classes.root}>
       <DrawArea mode={mode}/>
-      <MyColorPicker/>
+      <div>
+        <MyColorPicker/>
+        <ColorSelect/>
+      </div>
     </div>
   );
 }

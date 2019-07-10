@@ -80,7 +80,6 @@ function DrawArea(props) {
     const drawDiv = document.getElementById ("drawArea");
     //const drawDiv = drawRef
     const boundingRect = drawDiv.getBoundingClientRect();
-    console.log(boundingRect)
     return new Immutable.Map({
       x: mouseEvent.clientX - boundingRect.x,
       y: mouseEvent.clientY - boundingRect.y,
