@@ -13,13 +13,9 @@ import {
 } from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
-  colorSelectDiv: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+  commentPaper: {
+    margin: '10px',
+    padding: '10px',
   },
   margin: {
    margin: theme.spacing(1),
@@ -41,8 +37,9 @@ function Comment(comment) {
   const classes = useStyles()
   console.log(comment)
   return(
-    <Paper>
+    <Paper className={classes.commentPaper} >
       <Typography> {comment.comment.text} </Typography>
+      <Typography> By: {comment.comment.user} </Typography>
     </Paper>
   )
 }
